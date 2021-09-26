@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.js": "/static/js/main.88ad7b37.chunk.js",
+    "main.js.map": "/static/js/main.88ad7b37.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.13812433.js",
+    "runtime-main.js.map": "/static/js/runtime-main.13812433.js.map",
+    "static/js/2.ecec17eb.chunk.js": "/static/js/2.ecec17eb.chunk.js",
+    "static/js/2.ecec17eb.chunk.js.map": "/static/js/2.ecec17eb.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.1bb3dc978ad5201ad4ed58675c3afe48.js": "/precache-manifest.1bb3dc978ad5201ad4ed58675c3afe48.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/2.ecec17eb.chunk.js.LICENSE.txt": "/static/js/2.ecec17eb.chunk.js.LICENSE.txt",
+    "static/media/agid-kaharuba.png": "/static/media/agid-kaharuba.1e2682b2.png",
+    "static/media/andrew-do.jpg": "/static/media/andrew-do.77e39793.jpg",
+    "static/media/andy-le.jpg": "/static/media/andy-le.e1941801.jpg",
+    "static/media/bbt.jpg": "/static/media/bbt.0570989f.jpg",
+    "static/media/brendon-tong.png": "/static/media/brendon-tong.235d36af.png",
+    "static/media/bryan-dinh.png": "/static/media/bryan-dinh.ce7bcd1a.png",
+    "static/media/bryanvr.gif": "/static/media/bryanvr.dd22758a.gif",
+    "static/media/burger.jpg": "/static/media/burger.1875f3ce.jpg",
+    "static/media/burger2.jpg": "/static/media/burger2.c8c711b8.jpg",
+    "static/media/calvin-dong.jpg": "/static/media/calvin-dong.70374e54.jpg",
+    "static/media/herrick-feng.jpg": "/static/media/herrick-feng.23fb8998.jpg",
+    "static/media/kelvin-luong.jpg": "/static/media/kelvin-luong.a2385e36.jpg",
+    "static/media/lakshva-sharma.jpg": "/static/media/lakshva-sharma.fd6f8eaa.jpg",
+    "static/media/matt.jpg": "/static/media/matt.d328ffb5.jpg",
+    "static/media/mitchell-murphy.png": "/static/media/mitchell-murphy.072bcc98.png",
+    "static/media/mitchellvr.gif": "/static/media/mitchellvr.1fc34436.gif",
+    "static/media/pizza.jpg": "/static/media/pizza.4c753345.jpg",
+    "static/media/vanisha-singh.png": "/static/media/vanisha-singh.65f70b49.png",
+    "static/media/vanishavr.gif": "/static/media/vanishavr.406a8552.gif",
+    "static/media/vlad.jpg": "/static/media/vlad.368f1106.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.13812433.js",
+    "static/js/2.ecec17eb.chunk.js",
+    "static/js/main.88ad7b37.chunk.js"
+  ]
+}

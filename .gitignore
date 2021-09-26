@@ -129,5 +129,3 @@ key.json
 /backend/.env_orig
 /backend/service-account-key_old.json
 /backend/service-account-key_new.json
-
-build/

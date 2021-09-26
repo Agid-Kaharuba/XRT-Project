@@ -10,6 +10,10 @@ Our team's objective is:
 * Expandable for use as a platform to create training modules
 * Create a webapp that links into the XR modules so users can access them and be assessed
 
+### Live Sites
+
+[Web App](http://ec2-13-55-156-75.ap-southeast-2.compute.amazonaws.com/)
+
 [Swagger Docs](http://agid-kaharuba.github.io/2021_SES3A_TEAM1/swagger)
 
 # Instruction Manual
