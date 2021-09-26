@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import * as XLSX from 'xlsx';
 import ProgressModel, { Progress, Tracking, TrackingModel } from '../model/progress';
 import CourseModel from '../model/course';
 import TaskModel from '../model/task';
+import UserModel from '../model/user';
 import ResponseService from '../helpers/response';
 
 export default class ProgressController {
@@ -99,7 +101,7 @@ export default class ProgressController {
 
   public async putTracking(req: Request, res: Response) {
     try {
-      let tracking: Tracking = req.body;
+      const tracking: Tracking = req.body;
       tracking._id = undefined;
 
       let progress = await ProgressModel.findOne({
@@ -111,17 +113,16 @@ export default class ProgressController {
       });
 
       let response;
-      if (!progress){
+      if (!progress) {
         progress = new ProgressModel({
           userId: req.query.userId,
           taskId: req.query.taskId,
           courseId: req.query.courseId,
           completed: false,
-          tracking: [tracking]
+          tracking: [tracking],
         });
         response = await progress.save();
-      }
-      else {
+      } else {
         progress.tracking.push(tracking);
         response = await ProgressModel.updateOne({ _id: progress._id }, { $set: { tracking: progress.tracking } });
       }
@@ -131,5 +132,58 @@ export default class ProgressController {
       console.log(err);
       ResponseService.mongoErrorResponse(res, err);
     }
+  }
+
+  public async getTrackingLogs(req: Request, res: Response) {
+    const { userId, courseId } = req.query;
+
+    const workBook: XLSX.WorkBook = XLSX.utils.book_new();
+
+    const user = await UserModel.findOne({ _id: userId });
+    const course = await CourseModel.findOne({ _id: courseId });
+
+    const json = [];
+
+    json.push({
+      'First Name': user.firstname,
+      'Last Name': user.lastname,
+      Email: user.email,
+      'Staff Id': user.staffid,
+    });
+    json.push({
+      Course: course.name,
+      'Course Description': course.description,
+    });
+
+    const workSheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+    XLSX.utils.book_append_sheet(workBook, workSheet, 'Employee & Course');
+
+    for (const i in course.tasks) {
+      const task = await TaskModel.findOne({ _id: course.tasks[i]._id });
+      const progress = await ProgressModel.findOne({
+        $and: [
+          { userId },
+          { taskId: task._id },
+          { courseId },
+        ],
+      });
+
+      if (progress) {
+        const json = progress.tracking.map((tracking: any) => ({
+          event: tracking.event,
+          value: tracking.value,
+          data: JSON.stringify(tracking.data),
+        }));
+
+        const workSheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+        XLSX.utils.book_append_sheet(workBook, workSheet, `${task.name}`);
+      }
+    }
+
+    const buffer = XLSX.write(workBook, { bookType: 'xlsx', bookSST: false, type: 'base64' });
+
+    res
+      .set('Content-Disposition', 'attachment; filename=' + `${course.name}-${user.staffid}.xlsx`)
+      .send(Buffer.from(buffer, 'base64'));
   }
 }

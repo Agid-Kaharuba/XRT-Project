@@ -1,5 +1,6 @@
-import config from './helpers/config';
 import mongoose, { Document } from 'mongoose';
+import _ from 'underscore';
+import config from './helpers/config';
 
 // Seed data
 import EmployeesData from './seed-data/employees.json';
@@ -7,8 +8,9 @@ import SupervisorsData from './seed-data/supervisors.json';
 import RecipesData from './seed-data/recipes.json';
 import TasksData from './seed-data/tasks.json';
 import CoursesData from './seed-data/courses.json';
-import ImagesData from './seed-data/images.json'
+import ImagesData from './seed-data/images.json';
 import ProgressesData from './seed-data/progress.json';
+import TrackingData from './seed-data/tracking.json';
 
 // Mongo models
 import User from './model/user';
@@ -47,11 +49,16 @@ async function seed() {
       ...data,
       userId: Employees[CoursesData[data.courseId].assignedEmployees[data.userId]],
       taskId: Tasks[CoursesData[data.courseId].tasks[data.taskId]],
-      courseId: Courses[data.courseId]
-    }))
+      courseId: Courses[data.courseId],
+    }));
+
+    const len = TrackingData.length;
+    Progresses.map((progress: any) => {
+      progress.tracking = _.sample(TrackingData, len * 0.8);
+    });
 
     await save([Employees, Supervisors, Recipes, Tasks, Courses, Progresses, Images]);
-    console.log(`Done seeding`);
+    console.log('Done seeding');
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(`Error ${e}`);

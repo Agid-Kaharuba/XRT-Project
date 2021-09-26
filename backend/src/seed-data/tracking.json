@@ -1,0 +1,91 @@
+[
+  {
+    "event": "GRILL",
+    "value": 1
+  },
+  {
+    "event": "GRILL",
+    "value": 0
+  },
+  {
+    "event": "KNIFE",
+    "value": 1
+  },
+  {
+    "event": "KNIFE",
+    "value": 0
+  },
+  {
+    "event": "FRIDGE",
+    "value": "PATTY"
+  },
+  {
+    "event": "FRIDGE",
+    "value": "TOP_BUN"
+  },
+  {
+    "event": "FRIDGE",
+    "value": "BUTTOM_BUN"
+  },
+  {
+    "event": "PATTY_COOKED",
+    "value": 20.0,
+    "data": {
+      "top": 19.5,
+      "bottom": 20.5
+    }
+  },
+  {
+    "event": "PATTY_COOKED",
+    "value": 20.0,
+    "data": {
+      "top": 18.5,
+      "bottom": 21.5
+    }
+  },
+  {
+    "event": "PATTY_COOKED",
+    "value": 22.5,
+    "data": {
+      "top": 20.0,
+      "bottom": 25.0
+    }
+  },
+  {
+    "event": "ITEM_STACKED",
+    "value": "BOTTOM_BUN",
+    "data": {
+      "stack": []
+    }
+  },
+  {
+    "event": "ITEM_STACKED",
+    "value": "PATTY",
+    "data": {
+      "stack": [
+        "BOTTOM_BUN"
+      ]
+    }
+  },
+  {
+    "event": "ITEM_STACKED",
+    "value": "TOP_BUN",
+    "data": {
+      "stack": [
+        "BOTTOM_BUN",
+        "PATTY"
+      ]
+    }
+  },
+  {
+    "event": "SUBMISSION",
+    "value": 1,
+    "data": {
+      "stack": [
+        "BOTTOM_BUN",
+        "PATTY",
+        "TOP_BUN"
+      ]
+    }
+  }
+]

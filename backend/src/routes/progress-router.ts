@@ -136,4 +136,25 @@ export const ProgressRoute = (app: Express, controller: ProgressController) => {
      *     description: Success
      */
   app.put('/progress/tracking', controller.putTracking);
+
+  /**
+     * @swagger
+     * /progress/tracking/logs:
+     *  get:
+     *   description: Get tracking logs on a progress for a userId and courseId
+     *   tags: [Progress]
+     *   parameters:
+     *    - in: query
+     *      name: userId
+     *      required: false
+     *      type: string
+     *    - in: query
+     *      name: courseId
+     *      required: false
+     *      type: string
+     *   responses:
+     *    200:
+     *     description: Success
+     */
+  app.get('/progress/tracking/logs', controller.getTrackingLogs);
 };
